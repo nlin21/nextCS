@@ -1,0 +1,27 @@
+TYPE,BUTTON,Add a duck
+
+TYPE,BUTTON,Clear the ducks
+
+TYPE,CHECKBOX,Pause the ducks
+Pause the ducks,LABEL,Pause the ducks 
+
+TYPE,CHECKBOX,Lots of ducks
+Lots of ducks,LABEL,Lots of ducks
+
+TYPE,RADIO,curve
+curve,LABEL,path
+curve,OPTION,s,sine,checked
+
+TYPE,RANGE,amplitude
+amplitude,LABEL,amplitude
+amplitude,MIN,0
+amplitude,MAX,10
+amplitude,STEP,1
+amplitude,VALUE,5
+
+TYPE,RANGE,frequency
+frequency,LABEL,frequency
+frequency,MIN,0
+frequency,MAX,10
+frequency,STEP,1
+frequency,VALUE,5
