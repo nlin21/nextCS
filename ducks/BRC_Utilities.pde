@@ -194,7 +194,7 @@ void brcShowMessages(boolean which) {
 // =============================== Webpage========================
 String BRC_Webpage = 
 "HTTP/1.1 200 OK\n"
-+ "Content-Length: 6138\n"
++ "Content-Length: 6245\n"
 + "Content-Type: text/html\n"
 + "\n"
 + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -375,6 +375,7 @@ String BRC_Webpage =
 + "</td><td><table cellpadding=\"3\"><tr><td class=\"auto-style1\">path:&nbsp;&nbsp;&nbsp;\n"
 + "<input type=\"radio\" name=\"brc_5\" value=\"s\" onclick=\"SendNameValue('curve=s');\"  checked=\"checked\" /> sine&nbsp;&nbsp;&nbsp;\n"
 + "<input type=\"radio\" name=\"brc_5\" value=\"t\" onclick=\"SendNameValue('curve=t');\"   /> tangent&nbsp;&nbsp;&nbsp;\n"
++ "<input type=\"radio\" name=\"brc_5\" value=\"l\" onclick=\"SendNameValue('curve=l');\"   /> loop&nbsp;&nbsp;&nbsp;\n"
 + "</td></tr></table>\n"
 + "\n"
 + "</td><td><table ><tr><td class=\"auto-style1\">0  \n"

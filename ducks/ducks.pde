@@ -10,7 +10,7 @@ void setup() {
   noStroke();
   background(126,200,80);
   fill(56,175,205);
-  rect(0,175,600,200);
+  rect(0,175,width,200);
 }
 
 void draw() {
@@ -56,6 +56,11 @@ void draw() {
     }
   }
    
+  if (brcValue("curve").equals("l")) {
+    for (int i = 0; i < ducks.length; i++) {
+      ducks[i].swimLoop();
+    }
+  }
 }
 
 void clearDucks() {

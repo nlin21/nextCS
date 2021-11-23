@@ -12,6 +12,7 @@ TYPE,RADIO,curve
 curve,LABEL,path
 curve,OPTION,s,sine,checked
 curve,OPTION,t,tangent
+curve,OPTION,l,loop
 
 TYPE,RANGE,amplitude
 amplitude,LABEL,amplitude
