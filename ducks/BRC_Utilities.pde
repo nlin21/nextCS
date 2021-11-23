@@ -4,8 +4,8 @@ Server BRCServer;
 
 int BRC_port = 10002;
 
-String[] BRC_ids = new String[] {"Add a duck","Clear the ducks","Pause the ducks","Lots of ducks","curve","amplitude","frequency"};
-String[] BRC_values = new String[] {"0","0","false","false","s","5","5"};
+String[] BRC_ids = new String[] {"Add a duck","Clear the ducks","Pause the ducks","Lots of ducks","curve","amplitude","period"};
+String[] BRC_values = new String[] {"0","0","false","false","s","5","50"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -194,7 +194,7 @@ void brcShowMessages(boolean which) {
 // =============================== Webpage========================
 String BRC_Webpage = 
 "HTTP/1.1 200 OK\n"
-+ "Content-Length: 6031\n"
++ "Content-Length: 6138\n"
 + "Content-Type: text/html\n"
 + "\n"
 + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -292,7 +292,7 @@ String BRC_Webpage =
 + "[\"CHECKBOX\",\"brc_4\",\"Lots of ducks\"],\n"
 + "[\"RADIO\",\"brc_5\",\"curve\"],\n"
 + "[\"RANGE\",\"brc_6\",\"amplitude\",\"brc_7\"],\n"
-+ "[\"RANGE\",\"brc_8\",\"frequency\",\"brc_9\"]];\n"
++ "[\"RANGE\",\"brc_8\",\"period\",\"brc_9\"]];\n"
 + "\n"
 + "Monitor = false;\n"
 + "\n"
@@ -374,6 +374,7 @@ String BRC_Webpage =
 + "\n"
 + "</td><td><table cellpadding=\"3\"><tr><td class=\"auto-style1\">path:&nbsp;&nbsp;&nbsp;\n"
 + "<input type=\"radio\" name=\"brc_5\" value=\"s\" onclick=\"SendNameValue('curve=s');\"  checked=\"checked\" /> sine&nbsp;&nbsp;&nbsp;\n"
++ "<input type=\"radio\" name=\"brc_5\" value=\"t\" onclick=\"SendNameValue('curve=t');\"   /> tangent&nbsp;&nbsp;&nbsp;\n"
 + "</td></tr></table>\n"
 + "\n"
 + "</td><td><table ><tr><td class=\"auto-style1\">0  \n"
@@ -382,10 +383,10 @@ String BRC_Webpage =
 + "	amplitude: <label id=\"brc_7\"></label>\n"
 + "	</td></tr></table>\n"
 + "\n"
-+ "</td><td><table ><tr><td class=\"auto-style1\">0  \n"
-+ "    <input type=\"range\" id=\"brc_8\" name=\"brc_8\" min=\"0\" max=\"10\" value=\"5\" step=\"1\"\n"
-+ "	oninput=\"ShowRange('brc_8','brc_9','frequency');\" />  10<br/>\n"
-+ "	frequency: <label id=\"brc_9\"></label>\n"
++ "</td><td><table ><tr><td class=\"auto-style1\">10  \n"
++ "    <input type=\"range\" id=\"brc_8\" name=\"brc_8\" min=\"10\" max=\"100\" value=\"50\" step=\"10\"\n"
++ "	oninput=\"ShowRange('brc_8','brc_9','period');\" />  100<br/>\n"
++ "	period: <label id=\"brc_9\"></label>\n"
 + "	</td></tr></table>\n"
 + "\n"
 + "</td></tr></table>\n"

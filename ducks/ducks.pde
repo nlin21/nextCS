@@ -8,8 +8,9 @@ void setup() {
   size(600,400);
    
   noStroke();
-  fill(0,175,175);
-  rect(0,150,600,200);
+  background(126,200,80);
+  fill(56,175,205);
+  rect(0,175,600,200);
 }
 
 void draw() {
@@ -17,16 +18,16 @@ void draw() {
   
   String name = brcChanged();
   
+  if (name.equals("Clear the ducks")) {
+    clearDucks();
+  }
+  
   if (brcValue("Pause the ducks").equals("true")) {
     running = false;
   } else {
     running = true;
   }
   if (running == false) return;
-  
-  if (name.equals("Clear the ducks")) {
-    clearDucks();
-  }
   
   background(200);
   setup();
@@ -48,9 +49,16 @@ void draw() {
       ducks[i].swimSine();
     }
   }
+  
+  if (brcValue("curve").equals("t")) {
+    for (int i = 0; i < ducks.length; i++) {
+      ducks[i].swimTangent();
+    }
+  }
    
 }
 
 void clearDucks() {
   ducks = new Duck[0];
+  setup();
 }
