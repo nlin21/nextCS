@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 Duck[] ducks = new Duck[0];
 boolean running = true;
+int count;
 
 void setup() {
   frameRate(60);
@@ -37,8 +38,9 @@ void draw() {
   if (running == false) return;
   
   for (int i = 0; i < ducks.length; i++) {
-    if ((pow(mouseX - ducks[i].xPos, 2)/100.0 + pow(mouseY - ducks[i].yPos, 2)/64.0 <= 1.0)&& mousePressed) {
+    if ((pow(mouseX - ducks[i].xPos, 2)/100.0 + pow(mouseY - ducks[i].yPos, 2)/64.0 <= 1.0) && mousePressed) {
       ducks[i].disappear = true;
+      count -= 1;
     }
   }
   
@@ -60,20 +62,33 @@ void draw() {
   if (brcValue("curve").equals("s")) {
     for (int i = 0; i < ducks.length; i++) {
       ducks[i].swimSine();
+      ducks[i].inScreen();
     }
   }
   
   if (brcValue("curve").equals("t")) {
     for (int i = 0; i < ducks.length; i++) {
       ducks[i].swimTangent();
+      ducks[i].inScreen();
     }
   }
    
   if (brcValue("curve").equals("l")) {
     for (int i = 0; i < ducks.length; i++) {
       ducks[i].swimLoop();
+      ducks[i].inScreen();
     }
   }
+  
+  for (int i = 0; i < ducks.length; i++) {
+    if (ducks[i].visible && !ducks[i].disappear) {
+      count += 1;
+    }
+  }
+  
+  brcSetMonitor("count", count);
+  
+  count = 0;
 }
 
 void clearDucks() {

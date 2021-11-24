@@ -6,11 +6,20 @@ class Duck {
   
   int degrees;
   boolean disappear = false;
-  
+  boolean visible;
+
   Duck(int x, int y, int r) {
     xPos = x;
     yPos = y;
     radius = r;
+  }
+  
+  void inScreen() {
+    if (xPos >= 0 && xPos <= width) {
+      visible = true;
+    } else {
+      visible = false;
+    }
   }
 
   void swimSine() { 

@@ -27,3 +27,6 @@ period,MIN,10
 period,MAX,100
 period,STEP,10
 period,VALUE,50
+
+TYPE,MONITOR,count
+count,LABEL,Amount of ducks:
