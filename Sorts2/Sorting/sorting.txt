@@ -1,0 +1,35 @@
+TYPE,NOTE,warning
+warning,LABEL,Press SendAll button after settings
+
+TYPE,BUTTON,DoIt
+
+TYPE,TEXT,filename
+filename,LABEL,Filename
+
+TYPE,CHECKBOX,dir
+dir,LABEL,Send to SortDisplay?,checked
+
+TYPE,DROPDOWN,types
+types,LABEL,Sort types
+types,OPTION,B,Bubble
+types,OPTION,I,Insertion
+types,OPTION,S,Selection
+
+TYPE,RANGE,n
+n,LABEL,N elements
+n,MIN,10
+n,MAX,100
+n,STEP,1
+n,VALUE,20
+
+TYPE,DROPDOWN,config
+config,LABEL,Pre-ordered?
+config,OPTION,R,Random
+config,OPTION,S,Sorted
+config,OPTION,V,Reverse
+
+TYPE,MONITOR,comps
+comps,LABEL,Comparisons
+
+
+

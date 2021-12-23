@@ -1,0 +1,23 @@
+TYPE,NOTE,warning
+warning,LABEL,Press SendAll button after settings
+
+TYPE,BUTTON,ReadFile
+
+TYPE,TEXT,Filename
+Filename,LABEL,Filename
+
+TYPE,BUTTON,Go-once
+
+TYPE,BUTTON,Go-start
+
+TYPE,BUTTON,Go-stop
+
+TYPE,BUTTON,Restart
+
+TYPE,RANGE,frame-rate
+frame-rate,LABEL,Frame rate
+frame-rate,MIN,1
+frame-rate,MAX,200
+frame-rate,STEP,1
+frame-rate,VALUE,5
+
