@@ -1,9 +1,15 @@
 LAYOUT,VERTICAL
 
-TYPE,BUTTON,load
+TYPE,RANGE,resizedX
+resizedX,LABEL,New Width
+resizedX,MIN,0
+resizedX,MAX,1200
+resizedX,STEP,1
+resizedX,VALUE,400
 
-TYPE,TEXT,x
-x,LABEL,x
-
-TYPE,TEXT,y
-y,LABEL,y
+TYPE,RANGE,resizedY
+resizedY,LABEL,New Height
+resizedY,MIN,0
+resizedY,MAX,800 
+resizedY,STEP,1
+resizedY,VALUE,600

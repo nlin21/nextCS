@@ -3,10 +3,10 @@ import processing.net.*;
 Server BRCServer;
 
 int BRC_port = 10002;
-int BRC_WebBodySize = 6361;
+int BRC_WebBodySize = 6331;
 
-String[] BRC_ids = new String[] {"load","x","y"};
-String[] BRC_values = new String[] {"0","",""};
+String[] BRC_ids = new String[] {"resizedX","resizedY"};
+String[] BRC_values = new String[] {"400","600"};
 
 String[] BRC_Monitors = new String[] {};
 String[] BRC_MonitorValues = new String[] {};
@@ -283,9 +283,8 @@ String BRC_WebBody =
 + "\n"
 + "*/\n"
 + "\n"
-+ "const Controls=[[\"BUTTON\",\"brc_1\",\"load\"],\n"
-+ "[\"TEXT\",\"brc_2\",\"x\"],\n"
-+ "[\"TEXT\",\"brc_3\",\"y\"]];\n"
++ "const Controls=[[\"RANGE\",\"brc_1\",\"resizedX\",\"brc_2\"],\n"
++ "[\"RANGE\",\"brc_3\",\"resizedY\",\"brc_4\"]];\n"
 + "\n"
 + "Monitor = false;\n"
 + "\n"
@@ -351,18 +350,19 @@ String BRC_WebBody =
 + "<td class=\"auto-style1\"><label id=\"results\">OK</label></td></tr></table></td>\n"
 + "<td><input type=\"button\" name=\"sendall\" id=\"sendall\" value=\"Send all\" onclick=\"Sendall();\"/></td></tr></table>\n"
 + "\n"
-+ "<table><tr><td><input type=\"button\" name=\"<!--<id>-->\" id=\"<!--<id>-->\" value=\"load\" onClick=\"SendNameValue('load='+Math.floor(Math.random()*1000000));\" />\n"
-+ "&nbsp;&nbsp;&nbsp;\n"
++ "<br/>\n"
++ "<table ><tr><td class=\"auto-style1\">0  \n"
++ "    <input type=\"range\" id=\"brc_1\" name=\"brc_1\" min=\"0\" max=\"1200\" value=\"400\" step=\"1\"\n"
++ "    oninput=\"ShowRange('brc_1','brc_2','resizedX');\" />  1200<br/>\n"
++ "    New Width: <label id=\"brc_2\"></label>\n"
++ "    </td></tr></table>\n"
 + "\n"
-+ " </td><td><table ><tr><td class=\"auto-style1\">\n"
-+ "x: <input type=\"text\" name=\"brc_2\" id=\"brc_2\" onchange=\"SendNameValue('x='+document.getElementById('brc_2').value);\" /> \n"
-+ "</td></tr></table>\n"
++ "<table ><tr><td class=\"auto-style1\">0  \n"
++ "    <input type=\"range\" id=\"brc_3\" name=\"brc_3\" min=\"0\" max=\"800\" value=\"600\" step=\"1\"\n"
++ "    oninput=\"ShowRange('brc_3','brc_4','resizedY');\" />  800<br/>\n"
++ "    New Height: <label id=\"brc_4\"></label>\n"
++ "    </td></tr></table>\n"
 + "\n"
-+ "</td><td><table ><tr><td class=\"auto-style1\">\n"
-+ "y: <input type=\"text\" name=\"brc_3\" id=\"brc_3\" onchange=\"SendNameValue('y='+document.getElementById('brc_3').value);\" /> \n"
-+ "</td></tr></table>\n"
-+ "\n"
-+ "</td></tr></table>\n"
 + "\n"
 + "\n"
 + "</form>\n"
@@ -376,3 +376,4 @@ void brcSendWebpage(Client client) {
     String WebPage = head1+str(BRC_WebBody.length())+head2+BRC_WebBody;
     client.write(WebPage);
 }
+
