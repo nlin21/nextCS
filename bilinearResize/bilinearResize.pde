@@ -28,6 +28,8 @@ void setup() {
 void draw() {
   brc();
   
+  String name = brcChanged();
+  
   for (int i = 0; i < width; i++) {
     for (int j = 0 ; j < height; j++) {
       pixels[j*width+i] = color(200);
@@ -36,6 +38,11 @@ void draw() {
   
   int resizedX = int(brcValue("resizedX"));
   int resizedY = int(brcValue("resizedY"));
+  
+  if (name.equals("+1") && resizedX + 1 <= 1200) {
+    resizedX += 1;
+  }
+  
  
   resized = new color[resizedX][resizedY];
   
@@ -44,6 +51,7 @@ void draw() {
   } else {
     x_ratio = 0;
   }
+  
   if (resizedY > 1) {
     y_ratio = float(originalY - 1) / (resizedY - 1);
   } else {

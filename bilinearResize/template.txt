@@ -10,6 +10,6 @@ resizedX,VALUE,400
 TYPE,RANGE,resizedY
 resizedY,LABEL,New Height
 resizedY,MIN,0
-resizedY,MAX,800 
+resizedY,MAX,800
 resizedY,STEP,1
 resizedY,VALUE,600
