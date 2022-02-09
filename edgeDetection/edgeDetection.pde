@@ -1,14 +1,13 @@
 PImage fred;
-int[] george;  
-int state;  // 0 = none
-            // 1 = vertical detection
-            // 2 = horizontal detection
-            // 3 = omni-directional detection
+int[] george; 
 int threshold;
+int state = 0;  // 0 = none
+                // 1 = vertical detection
+                // 2 = horizontal detection
+                // 3 = omni-directional detection
 
 void setup() {
   size(500,500);
-  state = 0;
 }
 
 void draw() {
@@ -21,6 +20,7 @@ void draw() {
   threshold = int(brcValue("threshold"));
   
   if (name.equals("Load")) {
+    state = 0;
     if (path.equals("H")) {
       display("data/house2.jpeg");
     } else if (path.equals("C")) {
@@ -39,12 +39,16 @@ void draw() {
     state = 2;
   }
   
+  if (name.equals("Omni-directional")) {
+    state = 3;
+  }
+  
   if (state == 1) {
     vertical(threshold);
   } else if (state == 2) {
     horizontal(threshold);
   } else if (state == 3) {
-    // do omni
+    omni(threshold);
   } else {
     return;
   }
@@ -70,7 +74,7 @@ void greyScale() {
 void vertical(int threshold) {
   for (int i = 0; i < width-1; i++) {
     for (int j = 0; j < height; j++) {
-      if (abs(george[j*width+i] - george[j*width+i+1]) >= threshold) {
+      if (abs(george[j*width+i] - george[j*width+(i+1)]) >= threshold) {
         pixels[j*width+i] = color(255);
       } else {
         pixels[j*width+i] = color(0);
@@ -84,6 +88,19 @@ void horizontal(int threshold) {
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height-1; j++) {
       if (abs(george[j*width+i] - george[(j+1)*width+i]) >= threshold) {
+        pixels[j*width+i] = color(255);
+      } else {
+        pixels[j*width+i] = color(0);
+      }
+    }
+  }
+  updatePixels();
+}
+
+void omni(int threshold) {
+  for (int i = 0; i < width-1; i++) {
+    for (int j = 0; j < height-1; j++) {
+      if (abs(george[j*width+1] - int((george[j*width+i] + george[(j+1)*width+i] + george[j*width+(i+1)])/3)) >= threshold) {
         pixels[j*width+i] = color(255);
       } else {
         pixels[j*width+i] = color(0);
