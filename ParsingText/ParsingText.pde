@@ -1,7 +1,7 @@
 String test = "data/test1.txt";
 String hw = "http://bert.stuy.edu/pbrooks/fall2021/materials/nextcs-1/flexarray/travel.txt";
 
-String[] lines = loadStrings(test);
+String[] lines = loadStrings(hw);
 String answer = "";
   
 for (int i = 0; i < lines.length; i++) {

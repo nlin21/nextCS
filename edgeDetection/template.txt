@@ -1,0 +1,23 @@
+TYPE,NOTE,title
+title,LABEL,Edge Detection
+
+TYPE,DROPDOWN,files
+files,LABEL,Files
+files,OPTION,H,House
+files,OPTION,C,Car
+files,OPTION,B,Butterfly
+
+TYPE,BUTTON,Load
+
+TYPE,RANGE,threshold
+threshold,LABEL,threshold
+threshold,MIN,0
+threshold,MAX,400
+threshold,STEP,1
+threshold,VALUE,181
+
+TYPE,BUTTON,Vertical edges
+
+TYPE,BUTTON,Horizontal edges
+
+TYPE,BUTTON,Omni-directional
