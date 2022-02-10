@@ -100,7 +100,7 @@ void horizontal(int threshold) {
 void omni(int threshold) {
   for (int i = 0; i < width-1; i++) {
     for (int j = 0; j < height-1; j++) {
-      if (abs(george[j*width+1] - int((george[j*width+i] + george[(j+1)*width+i] + george[j*width+(i+1)])/3)) >= threshold) {
+      if (abs(george[j*width+i] - int((george[(j+1)*width+i] + george[j*width+(i+1)] + george[(j+1)*width+(i+1)])/3)) >= threshold) {
         pixels[j*width+i] = color(255);
       } else {
         pixels[j*width+i] = color(0);
