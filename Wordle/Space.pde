@@ -39,6 +39,7 @@ class Space {
   }
   
   void recolor(color col) {
+    c = col;
     fill(col);
     stroke(col);
     display();
