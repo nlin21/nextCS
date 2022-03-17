@@ -2,11 +2,11 @@ char[] letters1 = new char[]{'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'};
 char[] letters2 = new char[]{'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'};
 char[] letters3 = new char[]{char(60), 'Z', 'X', 'C', 'V', 'B', 'N', 'M', char(8)};
   
-Key[] row1;
-Key[] row2;
-Key[] row3;  
-  
 class Keyboard {
+  
+  Key[] row1;
+  Key[] row2;
+  Key[] row3;  
   
   Keyboard() {
     row1 = new Key[10];

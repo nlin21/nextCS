@@ -19,6 +19,7 @@ class Key {
   
   void recolor(color c) {
     fill(c);
+    stroke(c);
     rect(x,y,w,h,10,10,10,10);
     fill(255);
     text(character, x + w/2, y + h/2 + 10);
