@@ -8,6 +8,7 @@ int guess = 0;
 boolean held = false;
 boolean accepted = false;
 boolean won = false;
+boolean end = false;
 
 String[] wordbank;
 String[] targets;
@@ -48,7 +49,15 @@ void setup() {
   }  
 }
 
-void draw() {}
+void draw() {
+  if (guess == 6) {
+    won = true;
+    if (!end && !won) {
+      println("You lost, the word was " + target);
+      end = true;
+    }
+  }
+}
 
 void keyPressed() {
   if (won) {
