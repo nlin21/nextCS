@@ -52,7 +52,10 @@ void setup() {
 void draw() {
   if (guess == 6) {
     won = true;
-    if (!end && !won) {
+    if (!end && won) {
+      println("You lost, the word was " + target);
+      end = true;
+    } else if (!end && won) {
       println("You lost, the word was " + target);
       end = true;
     }
