@@ -1,4 +1,4 @@
-color GREEN = color(50,205,50);
+color GREEN = color(60,179,113);
 int TURN = 1;
 
 class Board {
@@ -54,10 +54,31 @@ class Board {
             (abs(board[i][j].y - y) < 25) && 
             (board[i][j].c == BLANK)) {
               board[i][j].c = turn;
+              checkLeft(i,j);
               TURN++;
             }
       }
     }
   }
+  
+  void checkLeft(int x, int y) {
+    boolean legal = false;
+    int h = -1;
+    for (int i = x-1, j = y; i >= 0; i--) {
+      if (board[i][j].c == turn) {
+        legal = true;
+        h = i;
+        break;
+      }
+    }
+    println(legal);
+    if (legal) {
+      for (int i = x-1, j = y; i != h; i--) {
+        board[i][j].flip();
+      }
+    }
+  }
+  
+  
   
 }
