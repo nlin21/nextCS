@@ -1,5 +1,6 @@
 color GREEN = color(60,179,113);
 int TURN = 1;
+int l, r, t, b, tlX, tlY, trX, trY, blX, blY, brX, brY;
 
 class Board {
   
@@ -55,6 +56,46 @@ class Board {
             (board[i][j].c == BLANK)) {
               if (masterCheck(i,j)) {
                 board[i][j].c = turn;
+                if (checkLeft(i,j)) {
+                  for (int h = i-1; h > l; h--) {
+                    board[h][j].flip();
+                  }
+                }
+                if (checkRight(i,j)) {
+                  for (int h = i+1; h < r; h++) {
+                    board[h][j].flip();
+                  }
+                }
+                if (checkBottom(i,j)) {
+                  for (int k = j+1; k < b; k++) {
+                    board[i][k].flip();
+                  }
+                }
+                if (checkTop(i,j)) {
+                  for (int k = j-1; k > t; k--) {
+                    board[i][k].flip();
+                  }
+                }
+                if (checkTopLeft(i,j)) {
+                  for (int h = i-1, k = j-1; h > tlX && k > tlY; h--, k--) {
+                    board[h][k].flip();
+                  }
+                }
+                if (checkTopRight(i,j)) {
+                  for (int h = i+1, k = j-1; h < trX && k > trY; h++, k--) {
+                    board[h][k].flip();
+                  }
+                }
+                if (checkBottomLeft(i,j)) {
+                  for (int h = i-1, k = j+1; h > blX && k < blY; h--, k++) {
+                    board[h][k].flip();
+                  }
+                }
+                if (checkBottomRight(i,j)) {
+                  for (int h = i+1, k = j+1; h < brX && k < brY; h++, k++) {
+                    board[h][k].flip();
+                  }
+                }
                 TURN++;
               }
             }
@@ -71,11 +112,12 @@ class Board {
   }
   
   boolean masterCheck(int i, int j) {
-    return checkLeft(i,j) || checkRight(i,j) || checkBottom(i,j) || checkTop(i,j);
+    setTarget();
+    return checkLeft(i,j) || checkRight(i,j) || checkBottom(i,j) || checkTop(i,j) ||
+           checkTopLeft(i,j) || checkTopRight(i,j) || checkBottomLeft(i,j) || checkBottomRight(i,j);
   }
   
   boolean checkLeft(int i, int j) {
-    setTarget();
     if (i < 2) {
       return false;
     }
@@ -84,6 +126,7 @@ class Board {
         return false;
       }
       if (board[h][j].c == target && board[h-1][j].c == turn) {
+        l = h-1;
         return true;
       }  
     }
@@ -99,6 +142,7 @@ class Board {
         return false;
       }
       if (board[h][j].c == target && board[h+1][j].c == turn) {
+        r = h+1;
         return true;
       }  
     }
@@ -114,6 +158,7 @@ class Board {
         return false;
       }
       if (board[i][k].c == target && board[i][k+1].c == turn) {
+        b = k+1;
         return true;
       }
     }
@@ -129,11 +174,79 @@ class Board {
         return false;
       }
       if (board[i][k].c == target && board[i][k-1].c == turn) {
+        t = k-1;
         return true;
       }
     }
     return false;
   }
   
+  boolean checkTopLeft(int i, int j) {
+    if (i < 2 || j < 2) {
+      return false;
+    }
+    for (int h = i-1, k = j-1; board[h][k].c != turn && i-1 >= 0 && k-1 >= 0; h--, j--) {
+      if (board[h][k].c == BLANK) {
+        return false;
+      }
+      if (board[h][k].c == target && board[h-1][k-1].c == turn) {
+        tlX = h-1;
+        tlY = k-1;
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  boolean checkTopRight(int i, int j) {
+    if (i > 5 || j < 2) {
+      return false;
+    }
+    for (int h = i+1, k = j-1; board[h][k].c != turn && i+1 <= 7 && k-1 >= 0; h++, k--) {
+      if (board[h][k].c == BLANK) {
+        return false;
+      }
+      if (board[h][k].c == target && board[h+1][k-1].c == turn) {
+        trX = h+1;
+        trY = k-1;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  boolean checkBottomLeft(int i, int j) {
+    if (i < 2 || j > 5) {
+      return false;
+    }
+    for (int h = i-1, k = j+1; board[h][k].c != turn && i-1 >= 0 && k+1 <= 7; h--, k++) {
+      if (board[h][k].c == BLANK) {
+        return false;
+      }
+      if (board[h][k].c == target && board[h-1][k+1].c == turn) {
+        blX = h-1;
+        blY = k+1;
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  boolean checkBottomRight(int i, int j) {
+    if (i > 5 || j > 5) {
+      return false;
+    }
+    for (int h = i+1, k = j+1; board[h][k].c != turn && i+1 <= 7 && k+1 <= 7; h++, k++) {
+      if (board[h][k].c == BLANK) {
+        return false;
+      }
+      if (board[h][k].c == target && board[h+1][k+1].c == turn) {
+        brX = h+1;
+        brY = k+1;
+        return true;
+      }
+    }
+    return false;
+  }
    
 }
